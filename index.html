@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Traffic light simulator</title>
+<style>
+  .traffic-light{
+    width:209.5px;
+height:201px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+margin-top:108px;
+margin-left:579px;
+}
+.light{
+width:51px;
+height:400px;
+border-radius:60%;
+margin:7px;
+}
+.red{
+background-color:red;
+
+
+}
+.yellow{
+background-color:yellow;
+}
+.green{
+background-color:green;
+}
+h1{
+text-align:center;
+font-style:italic;
+}
+body{
+background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Fm8CxOiXMx3IzNjnsryxmvLR6w_1ZtrSWA&usqp=CAU');
+background-repeat:no-repeat;
+background-position:563px 146px;
+
+}
+
+</style>
+</head>
+<body>
+<h1 >Traffic Light</h1>
+<div>
+<div class="traffic-light">
+<div class="light red"></div>
+<div class="light yellow"></div>
+<div class="light green"></div>
+</div>
+</div>
+<script>
+const redLight=document.querySelector('.red');
+const yellowLight=document.querySelector('.yellow');
+const greenLight=document.querySelector('.green');
+
+function changeLights(){
+setTimeout(()=>{
+redLight.style.backgroundColor='red';
+yellowLight.style.backgroundColor='transparent';
+greenLight.style.backgroundColor='transparent';
+
+setTimeout(()=>{
+redLight.style.backgroundColor='transparent';
+yellowLight.style.backgroundColor='yellow';
+greenLight.style.backgroundColor='transparent';
+
+setTimeout(()=>{
+redLight.style.backgroundColor='transparent';
+yellowLight.style.backgroundColor='transparent';
+greenLight.style.backgroundColor='green';
+
+changeLights(); //Recursively call to keep the cycle going
+},500); //green light for 2 seconds 
+},500);// Yellow light for 1 second 
+},500); // Red light for 2 seconds
+}
+
+changeLights();
+</script>
+</body>
+
+
+</html>
